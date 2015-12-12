@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="ru"> <!--<![endif]-->
+
+<head>
+
+	<meta charset="utf-8">
+
+	<title>Заголовок</title>
+	<meta name="description" content="">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">	
+	<link rel="stylesheet" href="css/main.css">
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	
+	        
+</head>
+
+<body>
+	<header>
+	
+		<h1>Сервис просмотра миниатюр видео YouTube</h1>
+		
+	</header>
+	
+	<main>
+		<article>
+			<aside class="left_t">
+			<h2>Как вытащить картинку-превью видео на ютубе?</h2>
+			<form>
+				<input type="text" id="url" placeholder="Введите URL">
+				<input TYPE=RESET VALUE="Очистить поле">
+				<br />
+			</form>
+			<p>Пошаговая инструкция:</p>
+			
+			<ol>
+				<li>Перейти на сайт <a href="https://www.youtube.com" target="_blank">YouTube</a> (откроется в новой вкладке) </li>
+				<li>Выбрать видео</li>
+				<li>Скопировать URL видео (Ctrl+C)</li>
+				<li>Вернуться на страницу нашего сервиса</li>
+				<li>Вставить скопированный URL в поле ввода (Ctrl+V)</li>
+				<li>Enjoy</li>
+			</ol>
+			</aside>
+			<aside class="right_t">
+			<div id="img"><img src=""></div>
+			</aside>
+		</article>
+	
+
+	</main>
+		<script>
+		function getImgUrl(videoUrl)
+		{
+			var arrVideoUrl = videoUrl.split('v=');
+			var arrUrlParam = arrVideoUrl[1].split('&');
+			var videoId = arrUrlParam[0];
+			return "http://img.youtube.com/vi/" + videoId + "/0.jpg";
+		}
+		var putUrl = function(){
+		$("#img img").attr("src", getImgUrl($("#url").val()));}
+		
+		$(function(){
+		$("#url").on("keyup",putUrl).on("change",putUrl);
+		});
+		</script>
+		
+</body>
+</html>
